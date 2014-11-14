@@ -338,7 +338,12 @@ function get_groups(query,callback) {
 	for (var i in dirs) {
 		if (has_group_access(user0,dirs[i],'read')) dirs2.push(dirs[i]);
 	}
-	callback({success:true,groups:dirs2});
+	var attributes={};
+	for (var i in dirs2) {
+		var dir0=dirs[i];
+		attributes[dir0]=wdutils.read_json_file(path0+'/'+dir0+'/attributes.json')||{};
+	}
+	callback({success:true,groups:dirs2,attributes:attributes});
 }
 function get_group(query,callback) {
 	var user0=current_user(query);
@@ -484,7 +489,12 @@ function get_projects(query,callback) {
 	}
 	var path0=wdconfig.data_path+'/groups/'+query.group+'/projects';
 	var dirs=wdutils.get_all_dirs(path0);
-	callback({success:true,projects:dirs});
+	var attributes={};
+	for (var i in dirs) {
+		var dir0=dirs[i];
+		attributes[dir0]=wdutils.read_json_file(path0+'/'+dir0+'/attributes.json')||{};
+	}
+	callback({success:true,projects:dirs,attributes:attributes});
 }
 function get_project(query,callback) {
 	var user0=current_user(query);
@@ -733,7 +743,12 @@ function get_acquisitions(query,callback) {
 	}
 	var path0=wdconfig.data_path+'/groups/'+query.group+'/projects/'+query.project+'/sessions/'+query.session+'/acquisitions';
 	var dirs=wdutils.get_all_dirs(path0);
-	callback({success:true,acquisitions:dirs});
+	var attributes={};
+	for (var i in dirs) {
+		var dir0=dirs[i];
+		attributes[dir0]=wdutils.read_json_file(path0+'/'+dir0+'/attributes.json')||{};
+	}
+	callback({success:true,acquisitions:dirs,attributes:attributes});
 }
 function get_acquisition(query,callback) {
 	var user0=current_user(query);
