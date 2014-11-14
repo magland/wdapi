@@ -300,11 +300,7 @@ function set_user_attributes(query,callback) {
 		callback({success:false,error:'user '+query.user+' not found'});
 		return;
 	}
-	var attributes=wdutils.read_json_file(path0+'/attributes.json');
-	if ('email' in query) attributes.email=query.email;
-	if ('first_name' in query) attributes.email=query.first_name;
-	if ('last_name' in query) attributes.last_name=query.last_name;
-	if (!wdutils.write_json_file(path0+'/attributes.json',attributes)) {
+	if (!wdutils.write_json_file(path0+'/attributes.json',query.attributes)) {
 		callback({success:false,error:'Unable to write attributes file.'});
 		return;
 	}
@@ -397,9 +393,7 @@ function set_group_attributes(query,callback) {
 		return;
 	}
 	
-	var attributes=wdutils.read_json_file(path0+'/attributes.json');
-	if ('description' in query) attributes.description=query.description;
-	if (!wdutils.write_json_file(path0+'/attributes.json',attributes)) {
+	if (!wdutils.write_json_file(path0+'/attributes.json',query.attributes)) {
 		callback({success:false,error:'Unable to write attributes file.'});
 		return;
 	}
@@ -557,9 +551,7 @@ function set_project_attributes(query,callback) {
 		callback({success:false,error:'project '+query.project+' not found'});
 		return;
 	}
-	var attributes=wdutils.read_json_file(path0+'/attributes.json');
-	if ('description' in query) attributes.description=query.description;
-	if (!wdutils.write_json_file(path0+'/attributes.json',attributes)) {
+	if (!wdutils.write_json_file(path0+'/attributes.json',query.attributes)) {
 		callback({success:false,error:'Unable to write attributes file.'});
 		return;
 	}
@@ -682,11 +674,7 @@ function set_session_attributes(query,callback) {
 		callback({success:false,error:'session '+query.session+' not found'});
 		return;
 	}
-	var attributes=wdutils.read_json_file(path0+'/attributes.json');
-	if ('description' in query) attributes.description=query.description;
-	if ('time' in query) attributes.time=query.time;
-	if ('subject' in query) attributes.subject=query.subject;
-	if (!wdutils.write_json_file(path0+'/attributes.json',attributes)) {
+	if (!wdutils.write_json_file(path0+'/attributes.json',query.attributes)) {
 		callback({success:false,error:'Unable to write attributes file.'});
 		return;
 	}
@@ -820,10 +808,7 @@ function set_acquisition_attributes(query,callback) {
 		callback({success:false,error:'acquisition '+query.acquisition+' not found'});
 		return;
 	}
-	var attributes=wdutils.read_json_file(path0+'/attributes.json');
-	if ('description' in query) attributes.description=query.description;
-	if ('type' in query) attributes.type=query.time;
-	if (!wdutils.write_json_file(path0+'/attributes.json',attributes)) {
+	if (!wdutils.write_json_file(path0+'/attributes.json',query.attributes)) {
 		callback({success:false,error:'Unable to write attributes file.'});
 		return;
 	}
